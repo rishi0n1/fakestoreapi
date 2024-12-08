@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      #parent{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 5px;
+            
+        }
+        #parent>div{
+            border: 2px solid;
+            width: 300px;
+            
+        }
+        #parent>div>div{
+            
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            gap: 2px;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+            border-radius: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="parent"></div>
+    <script>
+     
+        let getdata=JSON.parse(localStorage.getItem("dtails"))
+        console.log(getdata);
+        newgetdata=getdata.map((val)=>{
+            console.log(val);
+        var parent=document.getElementById("parent")
+        var child=document.createElement("div")
+        var childa=document.createElement("div")
+        var childb=document.createElement("div")
+        var childc=document.createElement("div")
+        var childd=document.createElement("div")
+        var img=document.createElement("img");
+        
+        img.src=val.image
+        childa.innerText=val.id
+        childb.innerText=val.name
+        childc.innerText=val.category
+        childd.innerText=val.price
+        child.append(childa,childb,childc,childd,img);
+        parent.append(child)
+        })
+        
+
+    </script>
+    
+</body>
+</html>

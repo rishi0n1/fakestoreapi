@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       #parent{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 5px;
+            
+        }
+        #parent>div{
+            border: 2px solid;
+            width: 300px;
+            
+        }
+        #parent>div>div{
+            
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            gap: 2px;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+            border-radius: 100px;
+        }
+        
+    </style>
+</head>
+<body>
+    <button onclick="fun()">favlist</button>
+    <div class="main_warp" id="parent">
+        
+    </div>
+    <script>
+        let data=[
+  {
+    "id": 1,
+    "name": "Classic White T-Shirt",
+    "description": "A timeless white t-shirt made of 100% organic cotton.",
+    "price": 19.99,
+    "category": "Clothing",
+    "image": "https://via.placeholder.com/150/FFFFFF/000000?text=White+T-Shirt"
+  },
+  {
+    "id": 2,
+    "name": "Wireless Bluetooth Headphones",
+    "description": "Noise-cancelling over-ear headphones with 20-hour battery life.",
+    "price": 99.99,
+    "category": "Electronics",
+    "image": "https://via.placeholder.com/150/0000FF/FFFFFF?text=Headphones"
+  },
+  {
+    "id": 3,
+    "name": "Modern Desk Lamp",
+    "description": "Sleek and adjustable desk lamp with LED lighting.",
+    "price": 39.99,
+    "category": "Home & Living",
+    "image": "https://via.placeholder.com/150/FFD700/000000?text=Desk+Lamp"
+  },
+  {
+    "id": 4,
+    "name": "Stylish Running Shoes",
+    "description": "Lightweight and comfortable running shoes for all-day wear.",
+    "price": 59.99,
+    "category": "Footwear",
+    "image": "https://via.placeholder.com/150/FF4500/FFFFFF?text=Running+Shoes"
+  },
+  {
+    "id": 5,
+    "name": "Ceramic Coffee Mug",
+    "description": "A durable coffee mug with a minimalist design.",
+    "price": 12.99,
+    "category": "Kitchenware",
+    "image": "https://via.placeholder.com/150/A52A2A/FFFFFF?text=Coffee+Mug"
+  },
+  {
+    "id": 6,
+    "name": "Gaming Keyboard",
+    "description": "RGB mechanical keyboard with customizable lighting effects.",
+    "price": 89.99,
+    "category": "Electronics",
+    "image": "https://via.placeholder.com/150/8A2BE2/FFFFFF?text=Gaming+Keyboard"
+  },
+  {
+    "id": 7,
+    "name": "Yoga Mat",
+    "description": "Eco-friendly yoga mat with non-slip surface.",
+    "price": 25.99,
+    "category": "Sports",
+    "image": "https://via.placeholder.com/150/00FF00/FFFFFF?text=Yoga+Mat"
+  },
+  {
+    "id": 8,
+    "name": "Classic Backpack",
+    "description": "Durable and water-resistant backpack with multiple compartments.",
+    "price": 49.99,
+    "category": "Accessories",
+    "image": "https://via.placeholder.com/150/000080/FFFFFF?text=Backpack"
+  },
+  {
+    "id": 9,
+    "name": "Digital Watch",
+    "description": "Waterproof digital watch with stopwatch and alarm functions.",
+    "price": 29.99,
+    "category": "Accessories",
+    "image": "https://via.placeholder.com/150/808080/FFFFFF?text=Digital+Watch"
+  },
+  {
+    "id": 10,
+    "name": "Wireless Mouse",
+    "description": "Ergonomic wireless mouse with adjustable DPI settings.",
+    "price": 24.99,
+    "category": "Electronics",
+    "image": "https://via.placeholder.com/150/4682B4/FFFFFF?text=Wireless+Mouse"
+  },
+  {
+    "id": 11,
+    "name": "Portable Blender",
+    "description": "Compact blender perfect for smoothies and shakes on the go.",
+    "price": 34.99,
+    "category": "Kitchen Appliances",
+    "image": "https://via.placeholder.com/150/FF69B4/FFFFFF?text=Blender"
+  },
+  {
+    "id": 12,
+    "name": "Leather Wallet",
+    "description": "Premium leather wallet with multiple compartments.",
+    "price": 45.99,
+    "category": "Accessories",
+    "image": "https://via.placeholder.com/150/8B4513/FFFFFF?text=Wallet"
+  },
+  {
+    "id": 13,
+    "name": "Smartphone Holder",
+    "description": "Adjustable smartphone holder for desks and tables.",
+    "price": 15.99,
+    "category": "Electronics",
+    "image": "https://via.placeholder.com/150/4169E1/FFFFFF?text=Phone+Holder"
+  },
+  {
+    "id": 14,
+    "name": "Electric Kettle",
+    "description": "Fast-boiling electric kettle with auto shut-off feature.",
+    "price": 29.99,
+    "category": "Kitchen Appliances",
+    "image": "https://via.placeholder.com/150/FFA07A/FFFFFF?text=Kettle"
+  },
+  {
+    "id": 15,
+    "name": "Travel Pillow",
+    "description": "Memory foam travel pillow for maximum comfort on long journeys.",
+    "price": 19.99,
+    "category": "Travel",
+    "image": "https://via.placeholder.com/150/00CED1/FFFFFF?text=Travel+Pillow"
+  },
+  {
+    "id": 16,
+    "name": "Fitness Tracker",
+    "description": "Track your steps, heart rate, and sleep patterns with ease.",
+    "price": 49.99,
+    "category": "Electronics",
+    "image": "https://via.placeholder.com/150/4682B4/FFFFFF?text=Fitness+Tracker"
+  },
+  {
+    "id": 17,
+    "name": "Wooden Cutting Board",
+    "description": "Durable and eco-friendly wooden cutting board.",
+    "price": 22.99,
+    "category": "Kitchenware",
+    "image": "https://via.placeholder.com/150/CD853F/FFFFFF?text=Cutting+Board"
+  },
+  {
+    "id": 18,
+    "name": "Scented Candles",
+    "description": "Relaxing scented candles for your home ambiance.",
+    "price": 14.99,
+    "category": "Home Decor",
+    "image": "https://via.placeholder.com/150/FFB6C1/FFFFFF?text=Candles"
+  },
+  {
+    "id": 19,
+    "name": "Bookshelf Organizer",
+    "description": "Compact and stylish organizer for your books and accessories.",
+    "price": 35.99,
+    "category": "Furniture",
+    "image": "https://via.placeholder.com/150/708090/FFFFFF?text=Bookshelf"
+  },
+  {
+    "id": 20,
+    "name": "Office Chair",
+    "description": "Ergonomic office chair with adjustable height and lumbar support.",
+    "price": 129.99,
+    "category": "Furniture",
+    "image": "https://via.placeholder.com/150/2F4F4F/FFFFFF?text=Office+Chair"
+  }
+]
+ 
+//id,title,price,category
+parent=document.getElementById("parent")
+emt=[]
+
+    let NewData=data.map((val)=>{
+        // console.log(val);
+        var child=document.createElement("div")
+        var childa=document.createElement("div")
+        var childb=document.createElement("div")
+        var childc=document.createElement("div")
+        var childd=document.createElement("div")
+        var img=document.createElement("img");
+        var btn=document.createElement("button")
+        
+
+        childa.innerText=val.id
+        childb.innerText=val.name
+        childc.innerText=val.category
+        childd.innerText=val.price
+        
+        btn.innerText="add to card"
+        img.src=val.image
+        btn.addEventListener("click",function (){
+            // child.remove() 
+            console.log(val);
+            emt.push(val)
+            localStorage.setItem("dtails",JSON.stringify(emt))
+
+        })
+
+        child.append(childa,childb,childc,childd,img,btn);
+        // console.log(child);
+        
+
+        // console.log(val.id);
+        // console.log(val.name);
+        // console.log(val.category);
+        // console.log(val.price);
+
+        parent.append(child)
+        
+    })
+    function fun(){
+        window.open("list.html","_self")
+    }
+    </script>
+</body>
+</html>
